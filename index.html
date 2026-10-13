@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Bites</title>
+<style>
+body{margin:0;font-family:Arial;background:#fffaf3;color:#222}
+header{padding:25px;background:white;display:flex;justify-content:space-around;align-items:center}
+.logo{font-size:28px;color:#e85d04;font-weight:bold}
+nav a{margin:10px;text-decoration:none;color:#222}
+.hero{padding:90px 8%;background:#ffe0b2}
+h1{font-size:55px}
+h1 span{color:#e85d04}
+.btn{display:inline-block;background:#e85d04;color:white;padding:14px 24px;text-decoration:none;border-radius:8px}
+section{text-align:center;padding:50px 8%}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.food{background:white;padding:25px;border-radius:12px;box-shadow:0 3px 15px #ddd}
+.emoji{font-size:55px}
+.price{color:#e85d04;font-weight:bold;font-size:20px}
+.about{background:#292929;color:white}
+footer{padding:20px;text-align:center;background:#171717;color:white}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">Urban Bites.</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#menu">Menu</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+<div class="hero" id="home">
+<h1>Good Food.<br><span>Good Mood.</span></h1>
+<p>Discover delicious flavors made with fresh ingredients.</p>
+<a href="#menu" class="btn">Explore Our Menu</a>
+</div>
+<section id="menu">
+<h2>Our Popular Menu</h2>
+<div class="menu">
+<div class="food"><div class="emoji">🍔</div><h3>Classic Burger</h3><p>Fresh burger with cheese.</p><div class="price">EGP 150</div></div>
+<div class="food"><div class="emoji">🍕</div><h3>Italian Pizza</h3><p>Pizza with cheese and tomato.</p><div class="price">EGP 180</div></div>
+<div class="food"><div class="emoji">🍟</div><h3>Crispy Fries</h3><p>Golden crispy fries.</p><div class="price">EGP 60</div></div>
+<div class="food"><div class="emoji">🥪</div><h3>Club Sandwich</h3><p>Fresh and delicious sandwich.</p><div class="price">EGP 120</div></div>
+</div>
+</section>
+<section class="about" id="about">
+<h2>About Urban Bites</h2>
+<p>Great food, fresh ingredients, and unforgettable flavors.</p>
+</section>
+<section id="contact">
+<h2>Contact Us</h2>
+<p>Email: hello@urbanbites.com</p>
+<a class="btn" href="mailto:hello@urbanbites.com">Contact Us</a>
+</section>
+<footer>© 2026 Urban Bites. All rights reserved.</footer>
+</body>
+</html>
