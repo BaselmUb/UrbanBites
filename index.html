@@ -1,60 +1,261 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban Bites</title>
-<style>
-body{margin:0;font-family:Arial;background:#fffaf3;color:#222}
-header{padding:25px;background:white;display:flex;justify-content:space-around;align-items:center}
-.logo{font-size:28px;color:#e85d04;font-weight:bold}
-nav a{margin:10px;text-decoration:none;color:#222}
-.hero{padding:90px 8%;background:#ffe0b2}
-h1{font-size:55px}
-h1 span{color:#e85d04}
-.btn{display:inline-block;background:#e85d04;color:white;padding:14px 24px;text-decoration:none;border-radius:8px}
-section{text-align:center;padding:50px 8%}
-.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
-.food{background:white;padding:25px;border-radius:12px;box-shadow:0 3px 15px #ddd}
-.emoji{font-size:55px}
-.price{color:#e85d04;font-weight:bold;font-size:20px}
-.about{background:#292929;color:white}
-footer{padding:20px;text-align:center;background:#171717;color:white}
-</style>
-</head>
-<body>
-<header>
-<div class="logo">Urban Bites.</div>
-<nav>
-<a href="#home">Home</a>
-<a href="#menu">Menu</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</nav>
-</header>
-<div class="hero" id="home">
-<h1>Good Food.<br><span>Good Mood.</span></h1>
-<p>Discover delicious flavors made with fresh ingredients.</p>
-<a href="#menu" class="btn">Explore Our Menu</a>
-</div>
-<section id="menu">
-<h2>Our Popular Menu</h2>
-<div class="menu">
-<div class="food"><div class="emoji">🍔</div><h3>Classic Burger</h3><p>Fresh burger with cheese.</p><div class="price">EGP 150</div></div>
-<div class="food"><div class="emoji">🍕</div><h3>Italian Pizza</h3><p>Pizza with cheese and tomato.</p><div class="price">EGP 180</div></div>
-<div class="food"><div class="emoji">🍟</div><h3>Crispy Fries</h3><p>Golden crispy fries.</p><div class="price">EGP 60</div></div>
-<div class="food"><div class="emoji">🥪</div><h3>Club Sandwich</h3><p>Fresh and delicious sandwich.</p><div class="price">EGP 120</div></div>
+<!DOCTYPE html>  <html lang="ar" dir="rtl">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>UrbanBites | طعم يستاهل</title>  
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">  
+<style>  
+*{box-sizing:border-box;margin:0;padding:0}  
+body{font-family:Cairo,sans-serif;background:#fffaf5;color:#202020}  
+a{text-decoration:none;color:inherit}  
+button{font:inherit;cursor:pointer}  
+header{position:sticky;top:0;z-index:20;background:#fffaf5;padding:15px 5%;box-shadow:0 2px 15px #0001}  
+nav{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}  
+.logo{font-size:26px;font-weight:900}.logo span{color:#ff652f}  
+.links{display:flex;gap:20px;font-size:14px;font-weight:bold}  
+.btn{display:inline-block;background:#ff652f;color:white;border:0;border-radius:12px;padding:12px 20px;font-weight:bold}  
+.hero{min-height:570px;position:relative;display:flex;align-items:center;overflow:hidden;background:#222;color:white;padding:70px 7%}  
+.slide{position:absolute;inset:0;background-position:center;background-size:cover;opacity:0;transition:opacity 1s}  
+.slide.active{opacity:1}  
+.shade{position:absolute;inset:0;background:linear-gradient(270deg,#000d,#0006,#0002)}  
+.hero-content{position:relative;z-index:2;max-width:620px}  
+.hero small{color:#ffb18e;font-weight:bold}  
+.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.3;margin:18px 0}  
+.hero h1 span{color:#ff652f}  
+.hero p{font-size:17px;color:#eee;margin-bottom:25px}  
+.dots{position:absolute;bottom:25px;right:7%;z-index:3;display:flex;gap:10px}  
+.dot{width:12px;height:12px;border:0;border-radius:50%;background:#fff8}  
+.dot.active{background:#ff652f;width:30px;border-radius:10px}  
+section{padding:70px 6%}  
+.heading{text-align:center;margin-bottom:35px}  
+.heading small{color:#ff652f;font-weight:bold}  
+.heading h2{font-size:35px;margin:5px}  
+.heading p{color:#777}  
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}  
+.category{background:white;padding:25px 10px;border:1px solid #eee;border-radius:17px;text-align:center}  
+.category b{font-size:38px;display:block}  
+.menu{background:#f7eee7}  
+.filters{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-bottom:30px}  
+.filter{background:white;border:1px solid #ddd;border-radius:25px;padding:9px 17px}  
+.filter.active,.filter:hover{background:#ff652f;color:white}  
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}  
+.product{background:white;border-radius:18px;overflow:hidden;box-shadow:0 5px 18px #00000008}  
+.product img{width:100%;height:220px;object-fit:cover;display:block}  
+.info{padding:18px}  
+.info p{color:#777;font-size:13px;margin:8px 0 16px;min-height:40px}  
+.bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}  
+.price{font-weight:900;color:#ff652f;font-size:19px}  
+.add{border:0;border-radius:10px;padding:10px 13px;background:#202020;color:white}  
+.add:hover{background:#ff652f}  
+</style>  
+</head>  
+<body>  
+<header>  
+<nav>  
+<a class="logo" href="#">Urban<span>Bites.</span></a>  
+<div class="links">  
+<a href="#home">الرئيسية</a>  
+<a href="#menu">المنيو</a>  
+<a href="#about">عن المطعم</a>  
+<a href="#contact">تواصل معنا</a>  
+</div>  
+<a class="btn" href="#menu">اطلب دلوقتي 🛒</a>  
+</nav>  
+</header>  <main>  
+<section class="hero" id="home">  
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1800&q=85')"></div>  
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo- pizza?auto=format&fit=crop&w=1800&q=85')"></div>  
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1800&q=85')"></div>  
+<div class="shade"></div>  
+<div class="hero-content">  
+<small>🍔 طازة • لذيذ • معمول بحب</small>  
+<h1>الجوع له حل…<br><span>والحل عندنا!</span></h1>  
+<p>عيش تجربة أكل مختلفة مع برجر غني، وبيتزا سخنة، ووجبات بتحب ترجع لها تاني.</p>  
+<a class="btn" href="#menu">اكتشف المنيو ←</a>  
+</div>  
+<div class="dots"><button class="dot active"></button><button class="dot"></button><button class="dot"></button></div>  
+</section>  <section>  
+<div class="heading"><small>اختار مزاجك</small><h2>نفسك في إيه النهارده؟</h2><p>كل اللي بتحبه تجربة أكل مختلفة معانا.</p></div>
+<div class="categories">
+<div class="category"><b>🍔</b><h3>برجر</h3></div>
+<div class="category"><b>🍕</b><h3>بيتزا</h3></div>
+<div class="category"><b>🍟</b><h3>وجبات جانبية</h3></div>
+<div class="category"><b>🥤</b><h3>مشروبات</h3></div>
 </div>
 </section>
-<section class="about" id="about">
-<h2>About Urban Bites</h2>
-<p>Great food, fresh ingredients, and unforgettable flavors.</p>
+
+<section class="menu" id="menu">
+<div class="heading">
+<small>أكل يفتح النفس</small>
+<h2>المنيو بتاعنا</h2>
+<p>اختار أكلك المفضل واستمتع بالطعم.</p>
+</div>
+<div class="filters">
+<button class="filter active" data-filter="all">الكل</button>
+<button class="filter" data-filter="burger">برجر</button>
+<button class="filter" data-filter="pizza">بيتزا</button>
+<button class="filter" data-filter="side">جانبي</button>
+<button class="filter" data-filter="drink">مشروبات</button>
+</div>
+<div class="products">
+<div class="product" data-category="burger">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80" alt="برجر">
+<div class="info"><h3>أوربان برجر</h3><p>برجر لذيذ مع الجبنة والخضار والصوص الخاص.</p><div class="bottom"><span class="price">150 جنيه</span><button class="add" data-name="أوربان برجر" data-price="150">أضف للسلة +</button></div></div>
+</div>
+<div class="product" data-category="burger">
+<img src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=700&q=80" alt="تشيز برجر">
+<div class="info"><h3>تشيز برجر</h3><p>برجر بالجبنة الذائبة وصوص مميز.</p><div class="bottom"><span class="price">175 جنيه</span><button class="add" data-name="تشيز برجر" data-price="175">أضف للسلة +</button></div></div>
+</div>
+<div class="product" data-category="pizza">
+<img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=80" alt="بيتزا">
+<div class="info"><h3>بيتزا مارجريتا</h3><p>جبنة موزاريلا وصلصة طماطم بطعم رائع.</p><div class="bottom"><span class="price">190 جنيه</span><button class="add" data-name="بيتزا مارجريتا" data-price="190">أضف للسلة +</button></div></div>
+</div>
+<div class="product" data-category="pizza">
+<img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=700&q=80" alt="بيتزا">
+<div class="info"><h3>بيتزا سوبر سوبريم</h3><p>بيتزا بالخضار والجبنة ومكونات متنوعة.</p><div class="bottom"><span class="price">250 جنيه</span><button class="add" data-name="بيتزا سوبر سوبريم" data-price="250">أضف للسلة +</button></div></div>
+</div>
+<div class="product" data-category="side">
+<img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80" alt="بطاطس">
+<div class="info"><h3>بطاطس كرسبي</h3><p>بطاطس مقرمشة تقدم ساخنة.</p><div class="bottom"><span class="price">60 جنيه</span><button class="add" data-name="بطاطس كرسبي" data-price="60">أضف للسلة +</button></div></div>
+</div>
+<div class="product" data-category="side">
+<img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=700&q=80" alt="قطع دجاج">
+<div class="info"><h3>تشيكن بايتس</h3><p>قطع دجاج مقرمشة ولذيذة.</p><div class="bottom"><span class="price">110 جنيه</span><button class="add" data-name="تشيكن بايتس" data-price="110">أضف للسلة +</button></div></div>
+</div>
+<div class="product" data-category="drink">
+<img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=700&q=80" alt="مشروب">
+<div class="info"><h3>مشروب فريش</h3><p>مشروب منعش مع وجبتك.</p><div class="bottom"><span class="price">45 جنيه</span><button class="add" data-name="مشروب فريش" data-price="45">أضف للسلة +</button></div></div>
+</div>
+<div class="product" data-category="drink">
+<img src="https://images.unsplash.com/photo-1513558161293-cdaf765edfd7?auto=format&fit=crop&w=700&q=80" alt="ليمون">
+<div class="info"><h3>ليمون بالنعناع</h3><p>مشروب بارد بالليمون والنعناع.</p><div class="bottom"><span class="price">55 جنيه</span><button class="add" data-name="ليمون بالنعناع" data-price="55">أضف للسلة +</button></div></div>
+</div>
+<div class="product" data-category="burger">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=80" alt="برجر">
+<div class="info"><h3>دبل برجر</h3><p>طبقتان من البرجر مع الجبنة والصوص.</p><div class="bottom"><span class="price">220 جنيه</span><button class="add" data-name="دبل برجر" data-price="220">أضف للسلة +</button></div></div>
+</div>
+</div>
 </section>
+
+<section id="cart">
+<div class="heading"><small>طلبك في مكان واحد</small><h2>🛒 سلة المشتريات</h2><p>راجع طلبك قبل التأكيد.</p></div>
+<div id="cart-items">السلة فاضية لسه.</div>
+<div class="heading">
+<h3>الإجمالي: <span id="total">0</span> جنيه</h3>
+<button class="btn" id="clear-cart">إفراغ السلة</button>
+</div>
+</section>
+
+<section id="about">
+<div class="heading">
+<small>حكايتنا</small>
+<h2>عن UrbanBites</h2>
+<p>بنقدم أكل طازة بطعم مميز واهتمام بالتفاصيل، عشان كل وجبة تبقى تجربة تستاهل.</p>
+</div>
+</section>
+
 <section id="contact">
-<h2>Contact Us</h2>
-<p>Email: hello@urbanbites.com</p>
-<a class="btn" href="mailto:hello@urbanbites.com">Contact Us</a>
+<div class="heading">
+<small>إحنا هنا ليك</small>
+<h2>تواصل معانا</h2>
+<p>يسعدنا نشوفك قريب في UrbanBites.</p>
+<a class="btn" href="#menu">شوف المنيو</a>
+</div>
 </section>
-<footer>© 2026 Urban Bites. All rights reserved.</footer>
+</main>
+
+<footer style="background:#202020;color:white;text-align:center;padding:30px 15px">
+<strong>Urban<span style="color:#ff652f">Bites.</span></strong>
+<p style="margin-top:8px">طعم يستاهل ❤️</p>
+<p style="color:#aaa;font-size:13px;margin-top:8px">© 2026 UrbanBites</p>
+</footer>
+
+<style>
+#cart-items{max-width:800px;margin:auto;text-align:center}
+.cart-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;border-bottom:1px solid #eee}
+.cart-row button{border:0;background:#ff652f;color:white;padding:5px 10px;border-radius:8px}
+@media(max-width:800px){
+.products{grid-template-columns:repeat(2,1fr)}
+.categories{grid-template-columns:repeat(2,1fr)}
+.hero{min-height:500px}
+}
+@media(max-width:520px){
+.products{grid-template-columns:1fr}
+.links{gap:10px;font-size:12px}
+.logo{font-size:21px}
+.heading h2{font-size:27px}
+.product img{height:230px}
+}
+</style>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+const dots=document.querySelectorAll('.dot');
+let current=0;
+
+function showSlide(index){
+slides[current].classList.remove('active');
+dots[current].classList.remove('active');
+current=index;
+slides[current].classList.add('active');
+dots[current].classList.add('active');
+}
+dots.forEach((dot,index)=>dot.addEventListener('click',()=>showSlide(index)));
+setInterval(()=>showSlide((current+1)%slides.length),4500);
+
+document.querySelectorAll('.filter').forEach(button=>{
+button.addEventListener('click',()=>{
+document.querySelector('.filter.active').classList.remove('active');
+button.classList.add('active');
+const filter=button.dataset.filter;
+document.querySelectorAll('.product').forEach(product=>{
+product.style.display=(filter==='all'||product.dataset.category===filter)?'block':'none';
+});
+});
+});
+
+let cart=[];
+const cartItems=document.getElementById('cart-items');
+const totalElement=document.getElementById('total');
+
+function renderCart(){
+if(cart.length===0){
+cartItems.textContent='السلة فاضية لسه.';
+totalElement.textContent='0';
+return;
+}
+cartItems.innerHTML='';
+let total=0;
+cart.forEach((item,index)=>{
+total+=item.price*item.qty;
+const row=document.createElement('div');
+row.className='cart-row';
+row.innerHTML=`<span>${item.name} × ${item.qty}</span><span>${item.price*item.qty} جنيه</span><button data-index="${index}">حذف</button>`;
+row.querySelector('button').addEventListener('click',()=>{
+cart.splice(index,1);
+renderCart();
+});
+cartItems.appendChild(row);
+});
+totalElement.textContent=total;
+}
+
+document.querySelectorAll('.add').forEach(button=>{
+button.addEventListener('click',()=>{
+const name=button.dataset.name;
+const price=Number(button.dataset.price);
+const existing=cart.find(item=>item.name===name);
+if(existing){existing.qty++;}
+else{cart.push({name,price,qty:1});}
+renderCart();
+document.getElementById('cart').scrollIntoView({behavior:'smooth'});
+});
+});
+
+document.getElementById('clear-cart').addEventListener('click',()=>{
+cart=[];
+renderCart();
+});
+</script>
 </body>
 </html>
