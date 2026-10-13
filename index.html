@@ -2,417 +2,1207 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UrbanBites | طعم يستاهل</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UrbanBites | أوربان بايتس</title>
+
 <style>
-:root{--orange:#e9764c;--dark:#303b32;--cream:#f8eddf;--sage:#dce8d7;--peach:#f4d7c5;--pink:#f3dfdf;--gold:#f4e6c6}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:85px}
-body{font-family:Cairo,sans-serif;color:var(--dark);background:linear-gradient(125deg,#f8eddf,#e4eddf,#f8e5db,#e9e8d7);background-size:300% 300%;animation:bgmove 24s ease infinite}
-@keyframes bgmove{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
-a{text-decoration:none;color:inherit}
-button,input{font:inherit}button{cursor:pointer}
-header{position:sticky;top:0;z-index:10;background:#f8eddfed;backdrop-filter:blur(12px);padding:12px 5%;box-shadow:0 3px 18px #303b3210}
-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.logo{font-size:25px;font-weight:900}.logo span{color:var(--orange)}
-.links{display:flex;gap:15px;flex-wrap:wrap;font-size:13px;font-weight:800}
-.links a:hover{color:var(--orange)}
-.btn{display:inline-block;border:0;background:var(--orange);color:white;border-radius:13px;padding:11px 17px;font-weight:800}
-.hero{position:relative;min-height:550px;display:flex;align-items:center;overflow:hidden;color:white;padding:60px 7%;border-radius:0 0 30px 30px}
-.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s}
-.slide.active{opacity:1}
-.shade{position:absolute;inset:0;background:linear-gradient(270deg,#17221de8,#17221d88,#17221d20)}
-.hero-content{position:relative;z-index:2;max-width:620px}
-.hero small{color:#ffd0b1;font-weight:800}
-.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.4;margin:16px 0}
-.hero h1 span{color:#ffc49c}
-.hero p{line-height:2;color:#fff2e9;margin-bottom:24px}
-.dots{position:absolute;bottom:22px;right:7%;z-index:3;display:flex;gap:9px}
-.dot{width:12px;height:12px;border:0;border-radius:20px;background:#ffffff99}
-.dot.active{width:30px;background:#ffb38c}
-section{padding:60px 6%}
-.heading{text-align:center;margin:0 auto 30px;max-width:700px}
-.heading small{color:#bd5e3d;font-weight:900}
-.heading h2{font-size:clamp(26px,4vw,36px);margin:6px 0}
-.heading p{color:#70766c;line-height:1.9}
-.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.category{padding:22px 8px;border-radius:18px;text-align:center;border:1px solid #ffffffaa;transition:.25s}
-.category:nth-child(4n+1){background:var(--peach)}
-.category:nth-child(4n+2){background:var(--sage)}
-.category:nth-child(4n+3){background:var(--pink)}
-.category:nth-child(4n){background:var(--gold)}
-.category b{font-size:35px;display:block}
-.category:hover{transform:translateY(-4px)}
-.menu{background:#e3eadbc9}
-.search{display:block;width:100%;max-width:520px;margin:0 auto 20px;padding:13px 17px;border:1px solid #d8d8c9;border-radius:14px;background:#fff7eb;outline:none}
-.filters{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:27px}
-.filter{background:#f8eddf;border:1px solid #ded5c7;border-radius:25px;padding:8px 14px}
-.filter.active,.filter:hover{background:var(--dark);color:white}
-.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.product{overflow:hidden;border-radius:19px;border:1px solid #ffffffb0;box-shadow:0 7px 20px #303b3210}
-.product:nth-child(4n+1){background:#fff0e4}
-.product:nth-child(4n+2){background:#eaf0e2}
-.product:nth-child(4n+3){background:#f5e5e3}
-.product:nth-child(4n){background:#f6edda}
-.product img{width:100%;height:205px;object-fit:cover;display:block}
-.info{padding:16px}
-.info p{font-size:13px;color:#71746b;line-height:1.8;min-height:45px;margin:7px 0 13px}
-.bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.price{color:#bf5938;font-weight:900;font-size:18px}
-.add{border:0;border-radius:10px;padding:9px 12px;background:var(--dark);color:white}
-.add:hover{background:var(--orange)}
-.offers{background:#f2d8c6}
-.offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.offer{padding:25px;border-radius:20px;background:linear-gradient(135deg,#fff0e3,#f1d3bd)}
-.offer:nth-child(2){background:linear-gradient(135deg,#e8efdf,#d3e2d0)}
-.offer:nth-child(3){background:linear-gradient(135deg,#f7e8df,#f1d9df)}
-.offer b{font-size:27px}
-#cart{background:#dce8d9}
-.cart-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border-bottom:1px solid #b9cbb6}
-.cart-row button{border:0;border-radius:8px;padding:5px 10px;background:#e9764c;color:white}
-.qty{display:flex;align-items:center;gap:8px}
-#cart-items{max-width:800px;margin:auto}
-.cart-total{text-align:center;margin-top:22px}
-.about{background:#f5e5d6}
-.about-box{max-width:800px;margin:auto;text-align:center;line-height:2}
-.contact{background:#dce8d7}
-footer{background:#303b32;color:#fff1e6;text-align:center;padding:30px 15px}
-footer span{color:#ffab83}
-@media(max-width:800px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}.categories{grid-template-columns:repeat(2,1fr)}.offer-grid{grid-template-columns:1fr}.hero{min-height:490px}}
-@media(max-width:520px){.products{grid-template-columns:1fr}.links{gap:9px;font-size:12px}.logo{font-size:21px}.hero{min-height:460px}.product img{height:220px}section{padding:45px 5%}}
-/* Luxury Black & Gold Theme */
 :root{
---orange:#d4af37;
---dark:#111111;
---cream:#171717;
---sage:#222222;
---peach:#252019;
---pink:#201d17;
---gold:#d4af37;
+  --bg:#11110f;
+  --panel:#1b1a17;
+  --panel2:#222019;
+  --gold:#d8b45a;
+  --gold-light:#f5df9b;
+  --text:#f7f1e4;
+  --muted:#b8b1a1;
+  --border:rgba(216,180,90,.3);
 }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-color:#f5f0e5;
-background:#0b0b0b;
+  margin:0;
+  background:
+    radial-gradient(ellipse at top,#29251b 0%,#151411 45%,#0e0e0c 100%);
+  color:var(--text);
+  font-family:Tahoma,Arial,sans-serif;
 }
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.container{width:min(1180px,92%);margin:auto}
+
+/* الشريط العلوي */
 header{
-background:#111111ee;
-box-shadow:0 3px 20px #d4af3720;
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(15,15,13,.94);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
 }
-.logo span,.links a:hover,.hero small,
-.heading small,.price,footer span{
-color:#d4af37;
+.nav{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
-.btn{
-background:linear-gradient(135deg,#f4d778,#b8860b);
-color:#111;
+.logo{
+  color:var(--gold-light);
+  font-size:27px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-shadow:0 0 18px rgba(216,180,90,.18);
 }
-.hero h1 span{color:#d4af37}
-.shade{
-background:linear-gradient(270deg,#000000f5,#000000aa,#00000040);
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{
+  color:#e6decc;
+  font-size:14px;
+  transition:.2s;
 }
-.dot.active{background:#d4af37}
-section,.menu,.offers,#cart,.about,.contact{
-background:#111111;
+.nav-links a:hover{color:var(--gold)}
+.cart-nav{
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:#17140d;
+  border:0;
+  border-radius:10px;
+  padding:11px 16px;
+  font-weight:bold;
 }
-.heading h2,.info h3,.offer b{color:#f4d778}
-.heading p,.info p{color:#c2bcae}
-.category,.product,.offer{
-background:#191919!important;
-border:1px solid #5c4b20;
-color:#f5f0e5;
+.cart-nav span{
+  background:#17140d;
+  color:var(--gold-light);
+  padding:3px 7px;
+  border-radius:20px;
+  margin-right:5px;
 }
-.category:hover,.product:hover,.offer:hover{
-border-color:#d4af37;
+
+/* الواجهة الرئيسية */
+.hero{
+  padding:34px 0 26px;
 }
-.search,.filter{
-background:#191919;
-color:#f5f0e5;
-border:1px solid #665421;
+.hero-box{
+  position:relative;
+  height:440px;
+  border:1px solid var(--border);
+  border-radius:23px;
+  overflow:hidden;
+  background:#222;
+  box-shadow:0 18px 55px rgba(0,0,0,.38);
 }
-.filter.active,.filter:hover,.add{
-background:#d4af37;
-color:#111;
+.slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .8s ease;
 }
-.cart-row{border-color:#51431e}
-.cart-row button{
-background:#d4af37;
-color:#111;
+.slide.active{opacity:1;visibility:visible}
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
+.slide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.12),rgba(0,0,0,.86));
+}
+.hero-content{
+  position:absolute;
+  z-index:2;
+  top:50%;
+  right:7%;
+  transform:translateY(-50%);
+  max-width:510px;
+}
+.hero-label{
+  display:inline-block;
+  padding:7px 12px;
+  border:1px solid var(--gold);
+  color:var(--gold-light);
+  border-radius:30px;
+  font-size:12px;
+  margin-bottom:14px;
+  background:rgba(0,0,0,.3);
+}
+.hero h1{
+  margin:0 0 15px;
+  color:var(--gold-light);
+  font-size:clamp(30px,5vw,55px);
+  line-height:1.25;
+}
+.hero p{
+  color:#f2ecdf;
+  line-height:1.9;
+  font-size:16px;
+  margin:0 0 22px;
+}
+.gold-btn{
+  border:0;
+  border-radius:10px;
+  padding:13px 22px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:#17140d;
+  font-weight:900;
+  transition:transform .2s,filter .2s;
+}
+.gold-btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.slide-dots{
+  position:absolute;
+  z-index:4;
+  bottom:17px;
+  left:0;
+  right:0;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+}
+.dot{
+  width:9px;height:9px;
+  border:0;
+  border-radius:20px;
+  padding:0;
+  background:#aaa;
+  transition:.3s;
+}
+.dot.active{width:26px;background:var(--gold)}
+
+/* عناوين الأقسام */
+.section{padding:38px 0}
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:15px;
+  margin-bottom:22px;
+}
+.section-heading h2{
+  margin:0 0 8px;
+  color:var(--gold-light);
+  font-size:29px;
+}
+.section-heading p{margin:0;color:var(--muted);font-size:14px;line-height:1.8}
+.gold-line{
+  width:68px;height:3px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  margin-top:13px;
+}
+
+/* البحث والتصنيفات */
+.menu-tools{
+  display:flex;
+  flex-direction:column;
+  gap:17px;
+  margin-bottom:25px;
+}
+.search-box{position:relative}
+.search-box input{
+  width:100%;
+  background:var(--panel);
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:15px 17px;
+  outline:none;
+}
+.search-box input:focus{border-color:var(--gold)}
+.categories{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+}
+.category-btn{
+  padding:10px 15px;
+  color:#e7deca;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:30px;
+  transition:.2s;
+}
+.category-btn:hover,
+.category-btn.active{
+  color:#17140d;
+  background:var(--gold);
+  border-color:var(--gold);
+  font-weight:bold;
+}
+
+/* المنتجات */
+.products{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+.product-card{
+  overflow:hidden;
+  background:linear-gradient(145deg,#211f19,#171612);
+  border:1px solid var(--border);
+  border-radius:17px;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.product-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(245,223,155,.75);
+  box-shadow:0 14px 30px rgba(0,0,0,.28);
+}
+.product-image{
+  height:205px;
+  position:relative;
+  overflow:hidden;
+  background:#29261e;
+}
+.product-image img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .5s;
+}
+.product-card:hover .product-image img{transform:scale(1.06)}
+.product-info{padding:17px}
+.product-info h3{
+  margin:0 0 9px;
+  color:var(--gold-light);
+  font-size:19px;
+}
+.product-info p{
+  margin:0 0 16px;
+  min-height:38px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+}
+.product-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.price{
+  color:var(--gold-light);
+  font-weight:900;
+  font-size:19px;
+  white-space:nowrap;
+}
+.price small{font-size:12px;color:var(--muted);font-weight:normal}
+.add-btn{
+  border:1px solid var(--gold);
+  background:var(--gold);
+  color:#17140d;
+  border-radius:9px;
+  padding:10px 13px;
+  font-weight:bold;
+}
+.add-btn:hover{background:var(--gold-light)}
+.empty-results{
+  grid-column:1/-1;
+  padding:35px;
+  text-align:center;
+  color:var(--muted);
+  border:1px dashed var(--border);
+  border-radius:12px;
+}
+
+/* العروض */
+.offers-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+.offer-card{
+  padding:23px;
+  border:1px solid var(--border);
+  border-radius:17px;
+  background:
+    radial-gradient(circle at top left,rgba(216,180,90,.13),transparent 55%),
+    var(--panel);
+}
+.offer-tag{
+  color:var(--gold-light);
+  font-size:12px;
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:6px 10px;
+  display:inline-block;
+}
+.offer-card h3{color:var(--gold-light);margin:16px 0 8px}
+.offer-card p{color:var(--muted);font-size:14px;line-height:1.8}
+.offer-price{
+  color:var(--gold-light);
+  font-size:24px;
+  font-weight:900;
+  margin:16px 0;
+}
+.offer-price small{font-size:12px;color:var(--muted)}
+
+/* السلة */
+.cart-section{scroll-margin-top:90px}
+.cart-box{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:23px;
+}
+.cart-empty{
+  color:var(--muted);
+  text-align:center;
+  padding:20px 0;
+}
+.cart-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:15px 0;
+  border-bottom:1px solid rgba(216,180,90,.13);
+}
+.cart-item:last-child{border-bottom:0}
+.cart-item h4{margin:0 0 7px;color:var(--gold-light)}
+.cart-item small{color:var(--muted)}
+.quantity{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.quantity button{
+  width:30px;height:30px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:#2b281f;
+  color:var(--gold-light);
+  font-weight:bold;
+}
+.quantity span{min-width:16px;text-align:center}
+.cart-summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  border-top:1px solid var(--border);
+  padding-top:18px;
+  margin-top:10px;
+}
+.cart-total{color:var(--gold-light);font-size:23px;font-weight:900}
+.cart-actions{display:flex;gap:10px;flex-wrap:wrap}
+.secondary-btn{
+  padding:12px 16px;
+  background:transparent;
+  color:var(--gold-light);
+  border:1px solid var(--border);
+  border-radius:10px;
+}
+.secondary-btn:hover{background:var(--panel2)}
+.customer-fields{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:18px;
+}
+.customer-fields input,
+.customer-fields textarea{
+  width:100%;
+  padding:13px;
+  border-radius:10px;
+  background:#12120f;
+  border:1px solid var(--border);
+  color:var(--text);
+  outline:none;
+}
+.customer-fields input:focus,
+.customer-fields textarea:focus{border-color:var(--gold)}
+.customer-fields textarea{grid-column:1/-1;resize:vertical;min-height:80px}
+
+/* من نحن والتواصل */
+.about-box{
+  background:linear-gradient(135deg,#211f19,#151411);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:27px;
+}
+.about-box h2{color:var(--gold-light);margin-top:0}
+.about-box p{color:var(--muted);line-height:2}
+.contact-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:17px}
+.contact-link{
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:11px 15px;
+  color:var(--gold-light);
+}
+.contact-link:hover{background:var(--panel2)}
+
 footer{
-background:#050505;
-border-top:1px solid #5c4b20;
-}</style>
+  margin-top:35px;
+  border-top:1px solid var(--border);
+  padding:25px 0;
+  color:var(--muted);
+  text-align:center;
+  font-size:13px;
+}
+footer strong{color:var(--gold-light)}
+.toast{
+  position:fixed;
+  z-index:300;
+  bottom:22px;
+  left:50%;
+  transform:translate(-50%,20px);
+  opacity:0;
+  pointer-events:none;
+  background:var(--gold);
+  color:#17140d;
+  font-weight:bold;
+  padding:12px 20px;
+  border-radius:10px;
+  box-shadow:0 8px 25px #0006;
+  transition:.25s;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:850px){
+  .products{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .offers-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav-links{gap:12px}
+  .nav-links a{font-size:12px}
+  .hero-box{height:390px}
+}
+@media(max-width:560px){
+  .nav{min-height:66px;gap:8px}
+  .logo{font-size:20px}
+  .nav-links{display:none}
+  .cart-nav{padding:10px 12px;font-size:12px}
+  .hero{padding-top:20px}
+  .hero-box{height:390px}
+  .hero-content{right:6%;left:6%;max-width:none}
+  .hero h1{font-size:34px}
+  .hero p{font-size:14px}
+  .section{padding:27px 0}
+  .section-heading h2{font-size:24px}
+  .products{grid-template-columns:1fr 1fr;gap:10px}
+  .product-image{height:135px}
+  .product-info{padding:11px}
+  .product-info h3{font-size:15px}
+  .product-info p{font-size:11px;min-height:45px}
+  .product-bottom{align-items:flex-start;flex-direction:column}
+  .price{font-size:17px}
+  .add-btn{width:100%;padding:9px 5px;font-size:12px}
+  .offers-grid{grid-template-columns:1fr}
+  .customer-fields{grid-template-columns:1fr}
+  .customer-fields textarea{grid-column:auto}
+  .cart-box{padding:14px}
+  .cart-item{gap:8px}
+  .cart-item h4{font-size:14px}
+  .quantity{gap:6px}
+}
+</style>
 </head>
+
 <body>
+
 <header>
-<nav>
-<a class="logo" href="#home">Urban<span>Bites.</span></a>
-<div class="links">
-<a href="#home">الرئيسية</a><a href="#menu">المنيو</a><a href="#offers">العروض</a><a href="#about">عننا</a><a href="#contact">التواصل</a>
-</div>
-<a class="btn" href="#cart">🛒 السلة <span id="count">0</span></a>
-</nav>
+  <div class="container nav">
+    <a class="logo" href="#home">Urban<span>Bites</span></a>
+
+    <nav class="nav-links">
+      <a href="#home">الرئيسية</a>
+      <a href="#menu">المنيو</a>
+      <a href="#offers">العروض</a>
+      <a href="#about">من نحن</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+
+    <button class="cart-nav" onclick="goToCart()">
+      🛒 السلة <span id="cartCount">0</span>
+    </button>
+  </div>
 </header>
 
 <main>
-<section class="hero" id="home">
-<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1800&q=85')"></div>
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1800&q=85')"></div>
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1800&q=85')"></div>
-<div class="shade"></div>
-<div class="hero-content">
-<small>🍔 طازة • لذيذ • معمول بحب</small>
-<h1>الجوع له حل…<br><span>والحل عندنا!</span></h1>
-<p>برجر غني، بيتزا سخنة، وجبات مميزة وعصائر فريش. اختار اللي بتحبه واستمتع بالطعم.</p>
-<a class="btn" href="#menu">اكتشف المنيو ←</a>
-<a class="btn" href="#offers" style="background:#526e58">شوف العروض 🔥</a>
-</div>
-<div class="dots">
-<button class="dot active" aria-label="الصورة الأولى" onclick="showSlide(0)"></button>
-<button class="dot" aria-label="الصورة الثانية" onclick="showSlide(1)"></button>
-<button class="dot" aria-label="الصورة الثالثة" onclick="showSlide(2)"></button>
-<button class="dot" aria-label="الصورة الرابعة" onclick="showSlide(3)"></button>
-<button class="dot" aria-label="الصورة الخامسة" onclick="showSlide(4)"></button>
-<button class="dot" aria-label="الصورة السادسة" onclick="showSlide(5)"></button>
-<button class="dot" aria-label="الصورة السابعة" onclick="showSlide(6)"></button>
-<button class="dot" aria-label="الصورة الثامنة" onclick="showSlide(7)"></button>
-</div>
+
+<!-- الواجهة الرئيسية: 8 صور بتتغير تلقائيًا -->
+<section class="hero container" id="home">
+  <div class="hero-box">
+
+    <div class="slide active">
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1800&q=85" alt="برجر طازج">
+    </div>
+
+    <div class="slide">
+      <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1800&q=85" alt="بيتزا">
+    </div>
+
+    <div class="slide">
+      <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1800&q=85" alt="وجبة طازجة">
+    </div>
+
+    <div class="slide">
+      <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1800&q=85" alt="تشيز برجر">
+    </div>
+
+    <div class="slide">
+      <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1800&q=85" alt="بطاطس كرسبي">
+    </div>
+
+    <div class="slide">
+      <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=1800&q=85" alt="دجاج مقرمش">
+    </div>
+
+    <div class="slide">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1800&q=85" alt="بيتزا شهية">
+    </div>
+
+    <div class="slide">
+      <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1800&q=85" alt="أكل طازج">
+    </div>
+
+    <div class="hero-content">
+      <span class="hero-label">تجربة طعم مختلفة</span>
+      <h1>أهلاً بيك في<br>UrbanBites</h1>
+      <p>
+        طعم مميز، مكونات مختارة، وتجربة أكل تستاهلها.
+        اختار وجبتك المفضلة واطلبها بسهولة.
+      </p>
+      <button class="gold-btn" onclick="goToMenu()">اكتشف المنيو ←</button>
+    </div>
+
+    <div class="slide-dots" id="slideDots">
+      <button class="dot active" aria-label="الصورة 1" onclick="showSlide(0)"></button>
+      <button class="dot" aria-label="الصورة 2" onclick="showSlide(1)"></button>
+      <button class="dot" aria-label="الصورة 3" onclick="showSlide(2)"></button>
+      <button class="dot" aria-label="الصورة 4" onclick="showSlide(3)"></button>
+      <button class="dot" aria-label="الصورة 5" onclick="showSlide(4)"></button>
+      <button class="dot" aria-label="الصورة 6" onclick="showSlide(5)"></button>
+      <button class="dot" aria-label="الصورة 7" onclick="showSlide(6)"></button>
+      <button class="dot" aria-label="الصورة 8" onclick="showSlide(7)"></button>
+    </div>
+  </div>
 </section>
 
-<section>
-<div class="heading"><small>اختار مزاجك</small><h2>نفسك في إيه النهارده؟</h2><p>اختيارات تناسب كل الأذواق.</p></div>
-<div class="categories">
-<a class="category" href="#menu" data-jump="burger"><b>🍔</b>برجر</a>
-<a class="category" href="#menu" data-jump="pizza"><b>🍕</b>بيتزا</a>
-<a class="category" href="#menu" data-jump="side"><b>🍟</b>وجبات جانبية</a>
-<a class="category" href="#menu" data-jump="juice"><b>🥭</b>عصائر فريش</a>
-<a class="category" href="#menu" data-jump="cold"><b>🧋</b>مشروبات باردة</a>
-<a class="category" href="#menu" data-jump="hot"><b>☕</b>مشروبات ساخنة</a>
-<a class="category" href="#menu" data-jump="dessert"><b>🍰</b>حلويات</a>
-<a class="category" href="#menu" data-jump="all"><b>🍽️</b>كل المنيو</a>
-</div>
+<!-- المنيو -->
+<section class="section container" id="menu">
+  <div class="section-heading">
+    <div>
+      <h2>منيو أوربان بايتس</h2>
+      <p>اختار من وجباتنا ومشروباتنا المفضلة.</p>
+      <div class="gold-line"></div>
+    </div>
+  </div>
+
+  <div class="menu-tools">
+    <div class="search-box">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="🔍 دور على وجبتك المفضلة..."
+        oninput="renderProducts()"
+      >
+    </div>
+
+    <div class="categories">
+      <button class="category-btn active" data-category="all" onclick="setCategory('all',this)">الكل</button>
+      <button class="category-btn" data-category="burgers" onclick="setCategory('burgers',this)">🍔 برجر</button>
+      <button class="category-btn" data-category="pizza" onclick="setCategory('pizza',this)">🍕 بيتزا</button>
+      <button class="category-btn" data-category="sides" onclick="setCategory('sides',this)">🍟 إضافات</button>
+      <button class="category-btn" data-category="juices" onclick="setCategory('juices',this)">🥤 عصائر</button>
+      <button class="category-btn" data-category="drinks" onclick="setCategory('drinks',this)">☕ مشروبات</button>
+      <button class="category-btn" data-category="desserts" onclick="setCategory('desserts',this)">🍰 حلويات</button>
+    </div>
+  </div>
+
+  <div class="products" id="productsGrid"></div>
 </section>
 
-<section class="menu" id="menu">
-<div class="heading"><small>أكل يفتح النفس</small><h2>منيو UrbanBites</h2><p>دور على أكلك المفضل، واختار طلبك.</p></div>
-<input class="search" id="search" placeholder="🔎 ابحث عن برجر، عصير مانجو، بيتزا..." aria-label="البحث عن الأكلات">
-<div class="filters">
-<button class="filter active" data-filter="all">الكل</button>
-<button class="filter" data-filter="burger">برجر</button>
-<button class="filter" data-filter="pizza">بيتزا</button>
-<button class="filter" data-filter="side">جانبي</button>
-<button class="filter" data-filter="juice">عصائر</button>
-<button class="filter" data-filter="cold">مشروبات باردة</button>
-<button class="filter" data-filter="hot">ساخنة</button>
-<button class="filter" data-filter="dessert">حلويات</button>
-</div>
-<div class="products" id="products">
-<div class="product" data-category="burger" data-name="أوربان برجر">
-<img loading="lazy" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80" alt="أوربان برجر">
-<div class="info"><h3>أوربان برجر</h3><p>برجر بالجبنة والخضار والصوص الخاص.</p><div class="bottom"><span class="price">150 جنيه</span><button class="add" data-name="أوربان برجر" data-price="150">أضف +</button></div></div>
-</div>
-<div class="product" data-category="burger" data-name="تشيز برجر">
-<img loading="lazy" src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=700&q=80" alt="تشيز برجر">
-<div class="info"><h3>تشيز برجر</h3><p>برجر بالجبنة الذائبة وصوص مميز.</p><div class="bottom"><span class="price">175 جنيه</span><button class="add" data-name="تشيز برجر" data-price="175">أضف +</button></div></div>
-</div>
-<div class="product" data-category="burger" data-name="دبل برجر">
-<img loading="lazy" src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=80" alt="دبل برجر">
-<div class="info"><h3>دبل برجر</h3><p>طبقتان برجر مع الجبنة والصوص.</p><div class="bottom"><span class="price">220 جنيه</span><button class="add" data-name="دبل برجر" data-price="220">أضف +</button></div></div>
-</div>
-<div class="product" data-category="pizza" data-name="بيتزا مارجريتا">
-<img loading="lazy" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=80" alt="بيتزا مارجريتا">
-<div class="info"><h3>بيتزا مارجريتا</h3><p>جبنة موزاريلا وصلصة طماطم.</p><div class="bottom"><span class="price">190 جنيه</span><button class="add" data-name="بيتزا مارجريتا" data-price="190">أضف +</button></div></div>
-</div>
-<div class="product" data-category="pizza" data-name="بيتزا سوبر سوبريم">
-<img loading="lazy" src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=700&q=80" alt="بيتزا سوبر سوبريم">
-<div class="info"><h3>بيتزا سوبر سوبريم</h3><p>جبنة وخضار ومكونات متنوعة.</p><div class="bottom"><span class="price">250 جنيه</span><button class="add" data-name="بيتزا سوبر سوبريم" data-price="250">أضف +</button></div></div>
-</div>
-<div class="product" data-category="side" data-name="بطاطس كرسبي">
-<img loading="lazy" src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80" alt="بطاطس كرسبي">
-<div class="info"><h3>بطاطس كرسبي</h3><p>بطاطس مقرمشة تتقدم ساخنة.</p><div class="bottom"><span class="price">60 جنيه</span><button class="add" data-name="بطاطس كرسبي" data-price="60">أضف +</button></div></div>
-</div>
-<div class="product" data-category="side" data-name="تشيكن بايتس">
-<img loading="lazy" src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=700&q=80" alt="تشيكن بايتس">
-<div class="info"><h3>تشيكن بايتس</h3><p>قطع دجاج مقرمشة ولذيذة.</p><div class="bottom"><span class="price">110 جنيه</span><button class="add" data-name="تشيكن بايتس" data-price="110">أضف +</button></div></div>
-</div>
-<div class="product" data-category="juice" data-name="عصير مانجو">
-<img loading="lazy" src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=700&q=80" alt="عصير مانجو">
-<div class="info"><h3>عصير مانجو</h3><p>مانجو بطعم غني ومنعش.</p><div class="bottom"><span class="price">65 جنيه</span><button class="add" data-name="عصير مانجو" data-price="65">أضف +</button></div></div>
-</div>
-<div class="product" data-category="juice" data-name="عصير فراولة">
-<img loading="lazy" src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=700&q=80" alt="عصير فراولة">
-<div class="info"><h3>عصير فراولة</h3><p>فراولة فريش ومذاق منعش.</p><div class="bottom"><span class="price">60 جنيه</span><button class="add" data-name="عصير فراولة" data-price="60">أضف +</button></div></div>
-</div>
-<div class="product" data-category="juice" data-name="عصير برتقال">
-<img loading="lazy" src="https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=700&q=80" alt="عصير برتقال">
-<div class="info"><h3>عصير برتقال</h3><p>برتقال بطعم طبيعي منعش.</p><div class="bottom"><span class="price">50 جنيه</span><button class="add" data-name="عصير برتقال" data-price="50">أضف +</button></div></div>
-</div>
-<div class="product" data-category="juice" data-name="جوافة">
-<img loading="lazy" src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=700&q=80" alt="عصير جوافة">
-<div class="info"><h3>عصير جوافة</h3><p>جوافة كريمي بطعم لطيف.</p><div class="bottom"><span class="price">55 جنيه</span><button class="add" data-name="عصير جوافة" data-price="55">أضف +</button></div></div>
-</div>
-<div class="product" data-category="juice" data-name="ليمون بالنعناع">
-<img loading="lazy" src="https://images.unsplash.com/photo-1513558161293-cdaf765edfd7?auto=format&fit=crop&w=700&q=80" alt="ليمون بالنعناع">
-<div class="info"><h3>ليمون بالنعناع</h3><p>ليمون منعش بالنعناع.</p><div class="bottom"><span class="price">55 جنيه</span><button class="add" data-name="ليمون بالنعناع" data-price="55">أضف +</button></div></div>
-</div>
-<div class="product" data-category="juice" data-name="كوكتيل فواكه">
-<img loading="lazy" src="https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=700&q=80" alt="كوكتيل فواكه">
-<div class="info"><h3>كوكتيل فواكه</h3><p>مزيج فواكه بطعم مميز.</p><div class="bottom"><span class="price">75 جنيه</span><button class="add" data-name="كوكتيل فواكه" data-price="75">أضف +</button></div></div>
-</div>
-<div class="product" data-category="cold" data-name="ميلك شيك شوكولاتة">
-<img loading="lazy" src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=700&q=80" alt="ميلك شيك">
-<div class="info"><h3>ميلك شيك شوكولاتة</h3><p>مشروب كريمي بالشوكولاتة.</p><div class="bottom"><span class="price">85 جنيه</span><button class="add" data-name="ميلك شيك شوكولاتة" data-price="85">أضف +</button></div></div>
-</div>
-<div class="product" data-category="cold" data-name="آيس كوفي">
-<img loading="lazy" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80" alt="آيس كوفي">
-<div class="info"><h3>آيس كوفي</h3><p>قهوة باردة لمحبي القهوة.</p><div class="bottom"><span class="price">80 جنيه</span><button class="add" data-name="آيس كوفي" data-price="80">أضف +</button></div></div>
-</div>
-<div class="product" data-category="cold" data-name="مشروب غازي">
-<img loading="lazy" src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?auto=format&fit=crop&w=700&q=80" alt="مشروب بارد">
-<div class="info"><h3>مشروب غازي</h3><p>مشروب بارد مع وجبتك.</p><div class="bottom"><span class="price">35 جنيه</span><button class="add" data-name="مشروب غازي" data-price="35">أضف +</button></div></div>
-</div>
-<div class="product" data-category="hot" data-name="قهوة">
-<img loading="lazy" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80" alt="قهوة">
-<div class="info"><h3>قهوة</h3><p>قهوة دافئة لعشاق المذاق الأصيل.</p><div class="bottom"><span class="price">45 جنيه</span><button class="add" data-name="قهوة" data-price="45">أضف +</button></div></div>
-</div>
-<div class="product" data-category="hot" data-name="كابتشينو">
-<img loading="lazy" src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=700&q=80" alt="كابتشينو">
-<div class="info"><h3>كابتشينو</h3><p>قهوة بالحليب ورغوة ناعمة.</p><div class="bottom"><span class="price">65 جنيه</span><button class="add" data-name="كابتشينو" data-price="65">أضف +</button></div></div>
-</div>
-<div class="product" data-category="dessert" data-name="تشيز كيك">
-<img loading="lazy" src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=700&q=80" alt="تشيز كيك">
-<div class="info"><h3>تشيز كيك</h3><p>حلوى كريمية بطعم غني.</p><div class="bottom"><span class="price">95 جنيه</span><button class="add" data-name="تشيز كيك" data-price="95">أضف +</button></div></div>
-</div>
-</div>
-<p id="empty" style="display:none;text-align:center;padding:25px">مش لاقيين الصنف ده. جرّب اسم تاني.</p>
+<!-- العروض -->
+<section class="section container" id="offers">
+  <div class="section-heading">
+    <div>
+      <h2>عروض مميزة</h2>
+      <p>اختيارات مميزة بسعر العرض.</p>
+      <div class="gold-line"></div>
+    </div>
+  </div>
+
+  <div class="offers-grid">
+
+    <article class="offer-card">
+      <span class="offer-tag">⭐ عرض مميز</span>
+      <h3>عرض البرجر</h3>
+      <p>أوربان برجر + بطاطس كرسبي.</p>
+      <div class="offer-price">199 <small>جنيه</small></div>
+      <button class="gold-btn" onclick="addDeal('عرض البرجر',['أوربان برجر','بطاطس كرسبي'],199)">
+        أضف للسلة
+      </button>
+    </article>
+
+    <article class="offer-card">
+      <span class="offer-tag">🔥 عرض البيتزا</span>
+      <h3>عرض البيتزا</h3>
+      <p>بيتزا مارجريتا + عصير برتقال.</p>
+      <div class="offer-price">220 <small>جنيه</small></div>
+      <button class="gold-btn" onclick="addDeal('عرض البيتزا',['بيتزا مارجريتا','عصير برتقال'],220)">
+        أضف للسلة
+      </button>
+    </article>
+
+    <article class="offer-card">
+      <span class="offer-tag">🥤 عرض الانتعاش</span>
+      <h3>عرض العصائر</h3>
+      <p>عصير مانجو + عصير فراولة.</p>
+      <div class="offer-price">110 <small>جنيه</small></div>
+      <button class="gold-btn" onclick="addDeal('عرض العصائر',['عصير مانجو','عصير فراولة'],110)">
+        أضف للسلة
+      </button>
+    </article>
+
+  </div>
 </section>
 
-<section class="offers" id="offers">
-<div class="heading"><small>وفّر واستمتع</small><h2>عروض UrbanBites 🔥</h2><p>عروض مقترحة تقدر تعدل أسعارها حسب عروض مطعمك.</p></div>
-<div class="offer-grid">
-<div class="offer"><b>🍔 + 🍟</b><h3>عرض البرجر</h3><p>برجر وبطاطس مع بعض.</p><h3>199 جنيه</h3><button class="btn deal" data-items="أوربان برجر,بطاطس كرسبي">اطلب العرض</button></div>
-<div class="offer"><b>🍕 🍹</b><h3>عرض البيتزا</h3><p>بيتزا ومشروب منعش.</p><h3>220 جنيه</h3><button class="btn deal" data-items="بيتزا مارجريتا,عصير برتقال">اطلب العرض</button></div>
-<div class="offer"><b>🥭 🍓</b><h3>عرض العصائر</h3><p>اختار عصيرين من المنيو.</p><h3>110 جنيه</h3><button class="btn deal" data-items="عصير مانجو,عصير فراولة">اطلب العرض</button></div>
-</div>
+<!-- سلة المشتريات -->
+<section class="section container cart-section" id="cart">
+  <div class="section-heading">
+    <div>
+      <h2>سلة المشتريات</h2>
+      <p>راجع طلبك قبل ما تأكده.</p>
+      <div class="gold-line"></div>
+    </div>
+  </div>
+
+  <div class="cart-box">
+    <div id="cartItems">
+      <div class="cart-empty">السلة لسه فاضية، اختار أكلك من المنيو.</div>
+    </div>
+
+    <div class="cart-summary">
+      <div>
+        <div style="color:var(--muted);font-size:13px;margin-bottom:7px">إجمالي الطلب</div>
+        <div class="cart-total"><span id="cartTotal">0</span> جنيه</div>
+      </div>
+
+      <div class="cart-actions">
+        <button class="secondary-btn" onclick="clearCart()">إفراغ السلة</button>
+        <button class="gold-btn" onclick="checkout()">اطلب عبر واتساب</button>
+      </div>
+    </div>
+
+    <div class="customer-fields">
+      <input type="text" id="customerName" placeholder="الاسم">
+      <input type="tel" id="customerPhone" placeholder="رقم الموبايل">
+      <textarea id="customerAddress" placeholder="العنوان وتفاصيل التوصيل"></textarea>
+    </div>
+  </div>
 </section>
 
-<section id="cart">
-<div class="heading"><small>راجع طلبك</small><h2>🛒 سلة المشتريات</h2><p>عدّل الكميات قبل إرسال الطلب.</p></div>
-<div id="cart-items" style="max-width:800px;margin:auto;text-align:center">السلة فاضية لسه.</div>
-<div class="cart-total">
-<h3>الإجمالي: <span id="total">0</span> جنيه</h3>
-<p style="margin:12px auto;color:#70766c">تأكيد الطلب بيتم عن طريق واتساب.</p>
-<button class="btn" id="checkout">تأكيد الطلب على واتساب</button>
-<button class="btn" id="clear" style="background:#526e58">إفراغ السلة</button>
-</div>
+<!-- من نحن -->
+<section class="section container" id="about">
+  <div class="about-box">
+    <h2>عن UrbanBites</h2>
+    <p>
+      في أوربان بايتس بنهتم بالطعم المميز والتفاصيل اللي بتفرق.
+      هدفنا نقدم لك تجربة سهلة وممتعة من اختيار وجبتك لحد تأكيد طلبك.
+      تصفح المنيو واختار اللي يناسبك.
+    </p>
+  </div>
 </section>
 
-<section class="about" id="about">
-<div class="about-box"><div class="heading"><small>حكايتنا</small><h2>عن UrbanBites</h2></div>
-<p>بنحب نقدم تجربة أكل مميزة تجمع بين الطعم الحلو والمكونات الطازة والاهتمام بالتفاصيل. هدفنا إن كل طلب يكون بداية لتجربة تستاهل تتكرر ❤️</p></div>
+<!-- التواصل -->
+<section class="section container" id="contact">
+  <div class="about-box">
+    <h2>تواصل معنا</h2>
+    <p>للطلب والاستفسارات، تقدر تتواصل معانا من خلال بيانات المطعم.</p>
+
+    <div class="contact-links">
+      <a class="contact-link" href="#menu">🍽️ تصفح المنيو</a>
+      <a class="contact-link" href="#cart">🛒 سلة المشتريات</a>
+      <a class="contact-link" href="#home">⬆️ أعلى الصفحة</a>
+    </div>
+  </div>
 </section>
 
-<section class="contact" id="contact">
-<div class="heading"><small>إحنا هنا ليك</small><h2>تواصل معانا</h2><p>للطلب والاستفسار، تقدر تتواصل مع المطعم من خلال واتساب.</p>
-<a class="btn" href="#cart">روح للسلة 🛒</a></div>
-</section>
 </main>
 
-<footer><h2>Urban<span>Bites.</span></h2><p>طعم يستاهل ❤️</p><p style="font-size:12px;margin-top:8px">© 2026 UrbanBites</p></footer>
+<footer>
+  <div class="container">
+    <strong>UrbanBites</strong> — طعم مميز وتجربة مختلفة.
+    <p>© <span id="year"></span> UrbanBites. جميع الحقوق محفوظة.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
 
 <script>
-const slides=[...document.querySelectorAll('.slide')];
-const dots=[...document.querySelectorAll('.dot')];
-let current=0;
-function showSlide(n){
-slides[current].classList.remove('active');dots[current].classList.remove('active');
-current=n;slides[current].classList.add('active');dots[current].classList.add('active');
+/* بيانات المنيو */
+const products = [
+  {
+    id:1,
+    name:"أوربان برجر",
+    price:150,
+    category:"burgers",
+    description:"برجر لذيذ بطعم مميز.",
+    image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:2,
+    name:"تشيز برجر",
+    price:175,
+    category:"burgers",
+    description:"برجر مع الجبنة الشهية.",
+    image:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:3,
+    name:"دبل برجر",
+    price:220,
+    category:"burgers",
+    description:"وجبة برجر مضاعفة لعشاق البرجر.",
+    image:"https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:4,
+    name:"بيتزا مارجريتا",
+    price:190,
+    category:"pizza",
+    description:"بيتزا بالجبنة والصلصة.",
+    image:"https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:5,
+    name:"بيتزا سوبر سوبريم",
+    price:250,
+    category:"pizza",
+    description:"بيتزا بمكونات متنوعة.",
+    image:"https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:6,
+    name:"بطاطس كرسبي",
+    price:60,
+    category:"sides",
+    description:"بطاطس مقرمشة ولذيذة.",
+    image:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:7,
+    name:"تشيكن بايتس",
+    price:110,
+    category:"sides",
+    description:"قطع دجاج مقرمشة.",
+    image:"https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:8,
+    name:"عصير مانجو",
+    price:65,
+    category:"juices",
+    description:"عصير مانجو بطعم منعش.",
+    image:"https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:9,
+    name:"عصير فراولة",
+    price:60,
+    category:"juices",
+    description:"عصير فراولة منعش.",
+    image:"https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:10,
+    name:"عصير برتقال",
+    price:50,
+    category:"juices",
+    description:"عصير برتقال منعش.",
+    image:"https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:11,
+    name:"جوافة",
+    price:55,
+    category:"juices",
+    description:"عصير جوافة لذيذ.",
+    image:"https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:12,
+    name:"ليمون بالنعناع",
+    price:55,
+    category:"juices",
+    description:"ليمون منعش مع النعناع.",
+    image:"https://images.unsplash.com/photo-1513558161293-cdaf765edfd7?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:13,
+    name:"كوكتيل فواكه",
+    price:75,
+    category:"juices",
+    description:"مزيج من الفواكه بطعم مميز.",
+    image:"https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:14,
+    name:"ميلك شيك شوكولاتة",
+    price:85,
+    category:"drinks",
+    description:"ميلك شيك بطعم الشوكولاتة.",
+    image:"https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:15,
+    name:"آيس كوفي",
+    price:80,
+    category:"drinks",
+    description:"قهوة باردة ومنعشة.",
+    image:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:16,
+    name:"مشروب غازي",
+    price:35,
+    category:"drinks",
+    description:"مشروب بارد مع وجبتك.",
+    image:"https://images.unsplash.com/photo-1581636625402-29b2a704ef13?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:17,
+    name:"قهوة",
+    price:45,
+    category:"drinks",
+    description:"قهوة بطعم غني.",
+    image:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:18,
+    name:"كابتشينو",
+    price:65,
+    category:"drinks",
+    description:"كابتشينو برغوة ناعمة.",
+    image:"https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    id:19,
+    name:"تشيز كيك",
+    price:95,
+    category:"desserts",
+    description:"حلوى تشيز كيك لذيذة.",
+    image:"https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=85"
+  }
+];
+
+/* حالة الموقع */
+let selectedCategory = "all";
+let cart = [];
+
+/* عرض المنتجات */
+function renderProducts(){
+  const grid = document.getElementById("productsGrid");
+  const search = document.getElementById("searchInput").value.trim().toLowerCase();
+
+  const filtered = products.filter(product => {
+    const matchesCategory =
+      selectedCategory === "all" ||
+      product.category === selectedCategory;
+
+    const matchesSearch =
+      product.name.toLowerCase().includes(search) ||
+      product.description.toLowerCase().includes(search);
+
+    return matchesCategory && matchesSearch;
+  });
+
+  if(filtered.length === 0){
+    grid.innerHTML = '<div class="empty-results">مفيش منتجات مطابقة للبحث.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(product => `
+    <article class="product-card">
+      <div class="product-image">
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        >
+      </div>
+      <div class="product-info">
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <div class="product-bottom">
+          <div class="price">${product.price} <small>جنيه</small></div>
+          <button class="add-btn" onclick="addToCart(${product.id})">
+            + أضف للسلة
+          </button>
+        </div>
+      </div>
+    </article>
+  `).join("");
 }
-dots.forEach((d,i)=>d.addEventListener('click',()=>showSlide(i)));
-setInterval(()=>showSlide((current+1)%slides.length),4500);
 
-let category='all';
-const products=[...document.querySelectorAll('.product')];
-const search=document.getElementById('search');
-function filterProducts(){
-let term=search.value.trim().toLowerCase(),shown=0;
-products.forEach(p=>{
-let matchCategory=category==='all'||p.dataset.category===category;
-let matchText=(p.dataset.name+' '+p.innerText).toLowerCase().includes(term);
-p.style.display=matchCategory&&matchText?'':'none';
-if(matchCategory&&matchText)shown++;
-});
-document.getElementById('empty').style.display=shown?'none':'block';
+/* تغيير التصنيف */
+function setCategory(category, button){
+  selectedCategory = category;
+
+  document.querySelectorAll(".category-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+  renderProducts();
 }
-document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{
-document.querySelector('.filter.active').classList.remove('active');
-b.classList.add('active');category=b.dataset.filter;filterProducts();
-}));
-search.addEventListener('input',filterProducts);
-document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>{
-category=b.dataset.jump;
-document.querySelector('.filter.active').classList.remove('active');
-const matching=document.querySelector('.filter[data-filter="'+category+'"]')||document.querySelector('.filter[data-filter="all"]');
-matching.classList.add('active');filterProducts();
-}));
 
-let cart=[];
-function addItem(name,price,qty=1){
-let item=cart.find(x=>x.name===name);
-if(item)item.qty+=qty;else cart.push({name,price,qty});
-renderCart();
+/* إضافة منتج للسلة */
+function addToCart(productId){
+  const product = products.find(item => item.id === productId);
+  if(!product) return;
+
+  const existing = cart.find(item =>
+    item.id === productId && !item.isDeal
+  );
+
+  if(existing){
+    existing.quantity++;
+  }else{
+    cart.push({
+      id:product.id,
+      name:product.name,
+      price:product.price,
+      quantity:1,
+      isDeal:false
+    });
+  }
+
+  renderCart();
+  showToast("تمت إضافة " + product.name + " للسلة");
 }
-document.querySelectorAll('.add').forEach(b=>b.addEventListener('click',()=>{
-addItem(b.dataset.name,Number(b.dataset.price));
-document.getElementById('count').textContent=cart.reduce((n,x)=>n+x.qty,0);
-}));
 
-document.querySelectorAll('.deal').forEach(b=>b.addEventListener('click',()=>{
-const items=b.dataset.items.split(',');
-items.forEach(name=>{
-const product=products.find(p=>p.dataset.name===name);
-if(product){const btn=product.querySelector('.add');addItem(name,Number(btn.dataset.price));}
-});
-document.getElementById('count').textContent=cart.reduce((n,x)=>n+x.qty,0);
-document.getElementById('cart').scrollIntoView({behavior:'smooth'});
-}));
+/* إضافة عرض للسلة */
+function addDeal(name, items, price){
+  const existing = cart.find(item =>
+    item.isDeal && item.name === name
+  );
 
+  if(existing){
+    existing.quantity++;
+  }else{
+    cart.push({
+      id:"deal-" + Date.now() + "-" + Math.random().toString(36).slice(2,7),
+      name:name + " (" + items.join(" + ") + ")",
+      price:price,
+      quantity:1,
+      isDeal:true
+    });
+  }
+
+  renderCart();
+  showToast("تمت إضافة " + name + " للسلة");
+}
+
+/* عرض السلة والإجمالي */
 function renderCart(){
-const area=document.getElementById('cart-items');
-area.innerHTML='';
-let total=0,count=0;
-if(!cart.length)area.textContent='السلة فاضية لسه.';
-cart.forEach((item,i)=>{
-total+=item.price*item.qty;count+=item.qty;
-const row=document.createElement('div');row.className='cart-row';
-const name=document.createElement('span');name.textContent=item.name;
-const qty=document.createElement('div');qty.className='qty';
-const minus=document.createElement('button');minus.textContent='−';minus.setAttribute('aria-label','تقليل الكمية');
-const number=document.createElement('span');number.textContent=item.qty;
-const plus=document.createElement('button');plus.textContent='+';plus.setAttribute('aria-label','زيادة الكمية');
-const price=document.createElement('span');price.textContent=(item.price*item.qty)+' جنيه';
-const del=document.createElement('button');del.textContent='حذف';
-minus.onclick=()=>{item.qty--;if(item.qty<=0)cart.splice(i,1);renderCart();};
-plus.onclick=()=>{item.qty++;renderCart();};
-del.onclick=()=>{cart.splice(i,1);renderCart();};
-qty.append(minus,number,plus);
-row.append(name,qty,price,del);area.appendChild(row);
-});
-document.getElementById('total').textContent=total;
-document.getElementById('count').textContent=count;
-}
-document.getElementById('clear').addEventListener('click',()=>{cart=[];renderCart();});
+  const cartItems = document.getElementById("cartItems");
+  const cartCount = document.getElementById("cartCount");
+  const cartTotal = document.getElementById("cartTotal");
 
-document.getElementById('checkout').addEventListener('click',()=>{
-if(!cart.length){alert('ضيف أصناف للسلة الأول.');return;}
-const phone=''; // اكتب رقم واتساب المطعم بكود الدولة، بدون علامة +
-if(!phone){alert('السلة جاهزة! لإرسال الطلب، افتح الكود واكتب رقم واتساب المطعم في المتغير phone.');return;}
-const lines=cart.map(x=>x.name+' × '+x.qty+' = '+(x.price*x.qty)+' جنيه');
-const total=cart.reduce((sum,x)=>sum+x.price*x.qty,0);
-const message='أهلاً UrbanBites، عايز أأكد الطلب:\n'+lines.join('\n')+'\nالإجمالي: '+total+' جنيه';
-window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(message),'_blank');
-});
+  const count = cart.reduce((sum,item) => sum + item.quantity,0);
+  const total = cart.reduce((sum,item) => sum + item.price * item.quantity,0);
+
+  cartCount.textContent = count;
+  cartTotal.textContent = total;
+
+  if(cart.length === 0){
+    cartItems.innerHTML =
+      '<div class="cart-empty">السلة لسه فاضية، اختار أكلك من المنيو.</div>';
+    return;
+  }
+
+  cartItems.innerHTML = cart.map((item,index) => `
+    <div class="cart-item">
+      <div>
+        <h4>${item.name}</h4>
+        <small>${item.price} جنيه × ${item.quantity} = ${item.price * item.quantity} جنيه</small>
+      </div>
+
+      <div class="quantity">
+        <button onclick="changeQuantity(${index},1)" aria-label="زيادة الكمية">+</button>
+        <span>${item.quantity}</span>
+        <button onclick="changeQuantity(${index},-1)" aria-label="تقليل الكمية">−</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+/* تعديل الكمية */
+function changeQuantity(index, amount){
+  if(!cart[index]) return;
+
+  cart[index].quantity += amount;
+
+  if(cart[index].quantity <= 0){
+    cart.splice(index,1);
+  }
+
+  renderCart();
+}
+
+/* إفراغ السلة */
+function clearCart(){
+  if(cart.length === 0){
+    showToast("السلة فاضية بالفعل");
+    return;
+  }
+
+  if(confirm("متأكد إنك عايز تفضي السلة؟")){
+    cart = [];
+    renderCart();
+    showToast("تم إفراغ السلة");
+  }
+}
+
+/* الانتقال للمنيو والسلة */
+function goToMenu(){
+  document.getElementById("menu").scrollIntoView({behavior:"smooth"});
+}
+
+function goToCart(){
+  document.getElementById("cart").scrollIntoView({behavior:"smooth"});
+}
+
+/* رسالة صغيرة */
+let toastTimer;
+
+function showToast(message){
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  },2300);
+}
+
+/* إتمام الطلب على واتساب */
+function checkout(){
+  if(cart.length === 0){
+    showToast("ضيف منتجات للسلة الأول");
+    return;
+  }
+
+  const name = document.getElementById("customerName").value.trim();
+  const customerPhone = document.getElementById("customerPhone").value.trim();
+  const address = document.getElementById("customerAddress").value.trim();
+
+  if(!name){
+    document.getElementById("customerName").focus();
+    showToast("اكتب اسمك الأول");
+    return;
+  }
+
+  if(!customerPhone){
+    document.getElementById("customerPhone").focus();
+    showToast("اكتب رقم موبايلك");
+    return;
+  }
+
+  if(!address){
+    document.getElementById("customerAddress").focus();
+    showToast("اكتب عنوان التوصيل");
+    return;
+  }
+
+  const total = cart.reduce((sum,item) => sum + item.price * item.quantity,0);
+
+  let message = "🍽️ *طلب جديد من UrbanBites*%0A%0A";
+  message += "👤 الاسم: " + encodeURIComponent(name) + "%0A";
+  message += "📱 رقم الموبايل: " + encodeURIComponent(customerPhone) + "%0A";
+  message += "📍 العنوان: " + encodeURIComponent(address) + "%0A%0A";
+  message += "*تفاصيل الطلب:*%0A";
+
+  cart.forEach((item,index) => {
+    message += encodeURIComponent(
+      (index + 1) + ". " + item.name +
+      " × " + item.quantity +
+      " = " + (item.price * item.quantity) + " جنيه"
+    ) + "%0A";
+  });
+
+  message += "%0A💰 الإجمالي: " + total + " جنيه";
+
+  /*
+    مهم:
+    اكتب رقم واتساب المطعم بدل الرقم الفاضي.
+    مصر: اكتب 20 ثم رقم الموبايل من غير + أو مسافات.
+    مثال شكلي: 201XXXXXXXXX
+  */
+  const whatsappNumber = "";
+
+  if(!whatsappNumber){
+    showToast("لازم تضيف رقم واتساب المطعم في الكود");
+    alert(
+      "لتفعيل الطلبات: ابحث داخل الكود عن const whatsappNumber = \"\"; " +
+      "واكتب رقم واتساب المطعم مع كود الدولة، من غير + أو مسافات."
+    );
+    return;
+  }
+
+  const url = "https://wa.me/" + whatsappNumber + "?text=" + message;
+  window.open(url,"_blank");
+}
+
+/* صور الواجهة بتتغير تلقائيًا */
+let currentSlide = 0;
+let slideInterval;
+
+function showSlide(index){
+  const slides = document.querySelectorAll(".slide");
+  const dots = document.querySelectorAll(".dot");
+
+  if(!slides.length) return;
+
+  currentSlide = (index + slides.length) % slides.length;
+
+  slides.forEach((slide,i) => {
+    slide.classList.toggle("active",i === currentSlide);
+  });
+
+  dots.forEach((dot,i) => {
+    dot.classList.toggle("active",i === currentSlide);
+  });
+
+  clearInterval(slideInterval);
+  startSlider();
+}
+
+function startSlider(){
+  clearInterval(slideInterval);
+
+  slideInterval = setInterval(() => {
+    const slides = document.querySelectorAll(".slide");
+    if(!slides.length) return;
+    showSlideWithoutReset((currentSlide + 1) % slides.length);
+  },4500);
+}
+
+function showSlideWithoutReset(index){
+  const slides = document.querySelectorAll(".slide");
+  const dots = document.querySelectorAll(".dot");
+
+  currentSlide = index;
+
+  slides.forEach((slide,i) => {
+    slide.classList.toggle("active",i === currentSlide);
+  });
+
+  dots.forEach((dot,i) => {
+    dot.classList.toggle("active",i === currentSlide);
+  });
+}
+
+/* تشغيل الموقع */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderProducts();
+renderCart();
+startSlider();
 </script>
+
 </body>
 </html>
